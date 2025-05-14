@@ -54,6 +54,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
         <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?> (Digitador)</h2>
 
         <a href="perfil_digitador.php" class="btn">Ver y editar perfil</a>
+        <a href="registrar_inventario.php" class="btn">Registrar Inventario</a>
         
         <form method="post" action="logout.php" style="display:inline;">
             <input type="submit" class="btn logout" value="Cerrar Sesión">
