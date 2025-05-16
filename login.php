@@ -4,8 +4,9 @@ include 'db.php';
 
 try {
     // Conexión PDO a PostgreSQL
-    $conn = new PDO("pgsql:host=$host;dbname=$dbname", "username=$user", "password=$password");
+    $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
     // Obtener datos del formulario
     $login_input = $_POST['username'];  // Puede ser usuario o correo

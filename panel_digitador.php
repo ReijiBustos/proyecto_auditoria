@@ -55,10 +55,12 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
 
         <a href="perfil_digitador.php" class="btn">Ver y editar perfil</a>
         <a href="registrar_inventario.php" class="btn">Registrar Inventario</a>
-        
+        <a href="ver_inventario.php" class="btn">Ver Inventario</a>
+
         <form method="post" action="logout.php" style="display:inline;">
             <input type="submit" class="btn logout" value="Cerrar Sesión">
         </form>
     </div>
 </body>
 </html>
+
