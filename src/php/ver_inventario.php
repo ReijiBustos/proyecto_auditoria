@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'src\php\db.php';
+include 'db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -27,7 +27,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Inventario Tecnológico</title>
-    <link rel="stylesheet" href="src/css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
     <script>
         function filtrarTabla() {
             const input = document.getElementById("buscar").value.toLowerCase();
@@ -75,7 +75,7 @@ try {
     </table>
 
     <div class="volver">
-        <a href="src\php\panel_digitador.php" class="btn">← Volver al panel</a>
+        <a href="panel_digitador.php" class="btn">← Volver al panel</a>
     </div>
 </body>
 </html>

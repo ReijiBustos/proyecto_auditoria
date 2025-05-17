@@ -1,5 +1,5 @@
 <?php
-include 'src\php\db.php';
+include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Redirigir si el registro fue exitoso
-        header("Location: index.html");
+        header("Location: panel_admin.php");
         exit();
     } catch (PDOException $e) {
         echo "<p style='color:red;'>Error: " . $e->getMessage() . "</p>";

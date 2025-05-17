@@ -1,5 +1,5 @@
 <?php
-include 'src\php\db.php';
+include 'db.php';
 
 function generarToken($longitud = 32) {
     return bin2hex(random_bytes($longitud / 2));
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="src\css\estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="container">

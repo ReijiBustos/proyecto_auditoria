@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'src\php\db.php';
+include 'db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'administrador') {
     header("Location: index.html");
@@ -35,7 +35,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Inventario Asignado</title>
-    <link rel="stylesheet" href="src\css\estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="container">
@@ -70,7 +70,7 @@ try {
             <p>No tienes elementos de inventario asignados.</p>
         <?php endif; ?>
 
-        <p><a href="src\php\panel_admin.php">← Volver al panel</a></p>
+        <p><a href="panel_admin.php">← Volver al panel</a></p>
     </div>
 </body>
 </html>

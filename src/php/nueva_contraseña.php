@@ -1,5 +1,5 @@
 <?php
-include 'src\php\db.php';
+include 'db.php';
 
 $token = $_GET['token'] ?? '';
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Restablecer Contraseña</title>
-    <link rel="stylesheet" href="src\css\estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="container">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'src\php\db.php';
+include 'db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -55,7 +55,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Perfil del Digitador</title>
-    <link rel="stylesheet" href="src\css\estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="container">
@@ -68,7 +68,7 @@ try {
         <form method="POST">
             <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['username']) ?>" required>
+                <input type="text" name="username" value="<?= htmlspecialchars($usuario['username']) ?>" required>
             </div>
 
             <div class="form-group">
@@ -85,7 +85,7 @@ try {
         </form>
 
         <div class="volver">
-            <a href="src\php\panel_digitador.php">← Volver al panel</a>
+            <a href="panel_digitador.php">← Volver al panel</a>
         </div>
     </div>
 </body>

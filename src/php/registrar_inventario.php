@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'src\php\db.php';
+include 'db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -70,45 +70,83 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Registro de Inventario</title>
-    <link rel="stylesheet" href="src/css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-large {
+            padding: 15px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h2>Registrar Elemento de Inventario</h2>
 
-        <?php if ($mensaje_form) echo "<p class='success'>$mensaje_form</p>"; ?>
+        <!-- Botones iniciales -->
+        <div class="action-buttons">
+            <button id="btnManual" class="btn btn-large">Registrar manualmente</button>
+            <button id="btnCSV" class="btn btn-large">Cargar archivo CSV</button>
+        </div>
 
-        <form method="POST">
-            <label>Marca:</label><input type="text" name="marca" required>
-            <label>Modelo:</label><input type="text" name="modelo" required>
-            <label>Serial:</label><input type="text" name="serial" required>
-            <label>Categoría:</label><input type="text" name="categoria" required>
-            <label>Estado:</label><input type="text" name="estado" required>
-            <label>Persona Responsable:</label>
-            <select name="id_persona" required>
-                <option value="">Seleccione una persona</option>
-                <?php foreach ($personas as $p): ?>
-                    <option value="<?= $p['id_persona'] ?>"><?= htmlspecialchars($p['username']) ?></option>
-                <?php endforeach; ?>
-            </select>
-            <input type="submit" name="registrar_manual" value="Registrar Manualmente" class="btn">
-        </form>
+        <!-- Formulario registro manual -->
+        <div id="formManual" class="hidden">
+            <?php if ($mensaje_form) echo "<p class='success'>$mensaje_form</p>"; ?>
+            <form method="POST">
+                <label>Marca:</label><input type="text" name="marca" required>
+                <label>Modelo:</label><input type="text" name="modelo" required>
+                <label>Serial:</label><input type="text" name="serial" required>
+                <label>Categoría:</label><input type="text" name="categoria" required>
+                <label>Estado:</label><input type="text" name="estado" required>
+                <label>Persona Responsable:</label>
+                <select name="id_persona" required>
+                    <option value="">Seleccione una persona</option>
+                    <?php foreach ($personas as $p): ?>
+                        <option value="<?= $p['id_persona'] ?>"><?= htmlspecialchars($p['username']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <input type="submit" name="registrar_manual" value="Registrar Manualmente" class="btn">
+            </form>
+        </div>
 
-        <hr>
+        <!-- Formulario CSV -->
+        <div id="formCSV" class="hidden">
+            <h2>Carga Masiva desde CSV</h2>
+            <?php if ($mensaje_csv) echo "<p class='success'>$mensaje_csv</p>"; ?>
+            <form method="POST" enctype="multipart/form-data">
+                <label>Archivo CSV:</label>
+                <input type="file" name="archivo_csv" accept=".csv" required>
+                <input type="submit" name="cargar_csv" value="Cargar CSV" class="btn">
+            </form>
+            <p><a href="plantilla_inventario.csv" download class="btn">Descargar plantilla CSV</a></p>
+        </div>
 
-        <h2>Carga Masiva desde CSV</h2>
-        <?php if ($mensaje_csv) echo "<p class='success'>$mensaje_csv</p>"; ?>
-
-        <form method="POST" enctype="multipart/form-data">
-            <label>Archivo CSV:</label>
-            <input type="file" name="archivo_csv" accept=".csv" required>
-            <input type="submit" name="cargar_csv" value="Cargar CSV" class="btn">
-        </form>
-
-        <p><a href="plantilla_inventario.csv" download class="btn">Descargar plantilla CSV</a></p>
-        <p><a href="src\php\panel_digitador.php">← Volver al panel</a></p>
+        <p><a href="panel_digitador.php">← Volver al panel</a></p>
     </div>
+
+    <!-- Script para mostrar/ocultar formularios -->
+    <script>
+        document.getElementById('btnManual').addEventListener('click', () => {
+            document.getElementById('formManual').classList.remove('hidden');
+            document.getElementById('formCSV').classList.add('hidden');
+        });
+
+        document.getElementById('btnCSV').addEventListener('click', () => {
+            document.getElementById('formCSV').classList.remove('hidden');
+            document.getElementById('formManual').classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
