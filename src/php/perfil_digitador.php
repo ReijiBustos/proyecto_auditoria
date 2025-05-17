@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'src\php\db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -55,7 +55,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Perfil del Digitador</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="src\css\estilos.css">
 </head>
 <body>
     <div class="container">
@@ -85,7 +85,7 @@ try {
         </form>
 
         <div class="volver">
-            <a href="panel_digitador.php">← Volver al panel</a>
+            <a href="src\php\panel_digitador.php">← Volver al panel</a>
         </div>
     </div>
 </body>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="src/css/estilos.css">
 </head>
 <body>
     <div class="container">
         <h2>Iniciar Sesión</h2>
-        <form method="POST" action="login.php">
+        <form method="POST" action="src\php\login.php">
             <div class="form-group">
                 <label for="username">Usuario:</label>
                 <input type="text" name="username" id="username" required>
@@ -21,9 +21,8 @@
 
             <input type="submit" value="Ingresar">
 
-            <!-- Botón para recuperar contraseña -->
             <div class="form-group" style="margin-top: 10px; text-align: center;">
-                <a href="recuperar.php" style="text-decoration: none; color: #007bff;">¿Olvidaste tu contraseña?</a>
+                <a href="src\php\recuperar.php" style="text-decoration: none; color: #007bff;">¿Olvidaste tu contraseña?</a>
             </div>
         </form>
     </div>

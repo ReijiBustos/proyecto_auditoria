@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'src\php\db.php';
 
 try {
     // Conexión PDO a PostgreSQL
@@ -29,9 +29,9 @@ try {
 
             // Redirigir según rol
             if ($user['rol'] === 'administrador') {
-                header("Location: panel_admin.php");
+                header("Location: src\php\panel_admin.php");
             } elseif ($user['rol'] === 'digitador') {
-                header("Location: panel_digitador.php");
+                header("Location: src\php\panel_digitador.php");
             } else {
                 echo "Rol no reconocido.";
             }

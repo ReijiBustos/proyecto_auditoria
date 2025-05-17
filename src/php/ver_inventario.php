@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'src\php\db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -27,55 +27,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Inventario Tecnológico</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .volver {
-            margin-top: 20px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .search-box {
-            margin-bottom: 15px;
-        }
-        .search-input {
-            width: 300px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="src/css/estilos.css">
     <script>
         function filtrarTabla() {
             const input = document.getElementById("buscar").value.toLowerCase();
@@ -123,7 +75,7 @@ try {
     </table>
 
     <div class="volver">
-        <a href="panel_digitador.php" class="btn">← Volver al panel</a>
+        <a href="src\php\panel_digitador.php" class="btn">← Volver al panel</a>
     </div>
 </body>
 </html>

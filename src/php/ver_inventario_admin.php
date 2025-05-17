@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'src\php\db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'administrador') {
     header("Location: index.html");
@@ -11,7 +11,6 @@ try {
     $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Obtener el id_persona del administrador (asumiendo que la tabla usuarios tiene id_persona)
     $stmtUser = $conn->prepare("SELECT id_persona FROM usuarios WHERE username = :username");
     $stmtUser->execute([':username' => $_SESSION['username']]);
     $userData = $stmtUser->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +21,6 @@ try {
 
     $id_persona = $userData['id_persona'];
 
-    // Obtener los elementos de inventario asignados a este administrador
     $stmt = $conn->prepare("SELECT * FROM inventario WHERE id_persona = :id_persona ORDER BY id_inventario");
     $stmt->execute([':id_persona' => $id_persona]);
     $inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +35,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Inventario Asignado</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="src\css\estilos.css">
 </head>
 <body>
     <div class="container">
@@ -72,7 +70,7 @@ try {
             <p>No tienes elementos de inventario asignados.</p>
         <?php endif; ?>
 
-        <p><a href="panel_admin.php">← Volver al panel</a></p>
+        <p><a href="src\php\panel_admin.php">← Volver al panel</a></p>
     </div>
 </body>
 </html>

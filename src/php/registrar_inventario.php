@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'src\php\db.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'digitador') {
     header("Location: index.html");
@@ -70,7 +70,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Registro de Inventario</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="src/css/estilos.css">
 </head>
 
 <body>
@@ -107,7 +107,7 @@ try {
         </form>
 
         <p><a href="plantilla_inventario.csv" download class="btn">Descargar plantilla CSV</a></p>
-        <p><a href="panel_digitador.php">← Volver al panel</a></p>
+        <p><a href="src\php\panel_digitador.php">← Volver al panel</a></p>
     </div>
 </body>
 

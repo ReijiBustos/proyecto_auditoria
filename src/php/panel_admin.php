@@ -13,7 +13,7 @@ $rol = $_SESSION['rol'];
 <head>
     <meta charset="UTF-8">
     <title>Bienvenido</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="src\css\estilos.css">
 </head>
 <body>
     <div class="container">
@@ -24,7 +24,7 @@ $rol = $_SESSION['rol'];
         <form action="registrar.html">
             <input type="submit" value="Registrar nuevo usuario">
         </form>
-        <form action="ver_inventario_admin.php" method="get" style="margin-top:10px;">
+        <form action="src\php\ver_inventario_admin.php" method="get" style="margin-top:10px;">
             <input type="submit" value="Ver mi inventario asignado">
         </form>
         <?php else: ?>
@@ -32,7 +32,7 @@ $rol = $_SESSION['rol'];
         <?php endif; ?>
 
 
-        <form action="logout.php" method="POST">
+        <form action="src\php\logout.php" method="POST">
             <input type="submit" value="Cerrar sesión">
         </form>
     </div>
